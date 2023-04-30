@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const { idProduct } = Astro.params;
+
+const responseProduct = await fetch(
+  `http://localhost:1337/api/products/${idProduct}?populate=*`
+);
+const dataProduct: ApiResponseProduct = await responseProduct.json();
+const product: any = dataProduct.data;
+---
+
+<Layout title="imageDate">
+  <main>
+    <img
+      class="product-image"
+      src={`http://localhost:1337${product.attributes.image.data[0].attributes.url}`}
+      alt=""
+    />
+    <h1>{product.attributes.name}</h1>
+    <h2>{product.attributes.description}</h2>
+  </main>
+</Layout>
+
+<style>
+  h1 {
+    margin: 2rem 0;
+  }
+
+  main {
+    margin: auto;
+    padding: 1em;
+    max-width: 60ch;
+  }
+</style>

@@ -1,0 +1,121 @@
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <a href="#" class="navbar-logo">Gustaria Tapas</a>
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="/" class="navbar-item primary">Home</a></li>
+        <li><a href="/menu" class="navbar-item primary">Menu</a></li>
+        <li><a href="/contact" class="navbar-item primary">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .primary {
+    color: #6097bc;
+  }
+  .header {
+    background-color: white;
+    padding: 20px;
+    height: 50px;
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      padding: 10px;
+    }
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-brand {
+    font-size: 2em;
+    color: #5e565a;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-item {
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-right: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .navbar-item:before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: #6097bc;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+  }
+
+  .navbar-item:hover:before {
+    width: 100%;
+  }
+
+  .navbar-logo {
+    color: #6097bc;
+    text-decoration: none;
+  }
+
+  .navbar-logo:hover {
+    color: #6097bc;
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      height: auto;
+      flex-direction: column;
+    }
+
+    .navbar-container {
+      flex-direction: column;
+    }
+
+    .navbar-brand {
+      margin-bottom: 20px;
+    }
+
+    .navbar-menu {
+      margin-top: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .navbar-item {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+    .navbar-item:before {
+      display: none;
+    }
+  }
+</style>

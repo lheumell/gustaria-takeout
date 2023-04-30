@@ -1,0 +1,143 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Reviews from "../components/Reviews/index.astro";
+import Button from "../components/Button/index.astro";
+import plancheTapas from "../assets/planche_tapas.png";
+import bgHome from "../assets/bg-home.jpg";
+---
+
+<Layout title="Welcome to Gustaria.">
+  <section class="first-section">
+    <h1 class="white title-home">GUSTARIA TAKE OUT</h1>
+  </section>
+  <section class="second-section">
+    <div class="presentation-content primary">
+      <p>
+        Bienvenue dans notre restaurant de tapas à emporter, où nous proposons
+        une sélection de plats délicieux et authentiques pour votre plaisir
+        culinaire. Nous sommes fiers de proposer une cuisine espagnole
+        traditionnelle avec des ingrédients frais et de qualité.
+      </p>
+      <p>
+        Notre menu de tapas est parfait pour ceux qui cherchent à déguster une
+        variété de plats en une seule commande. Nous avons une large gamme de
+        choix, de la tortilla espagnole classique aux croquetas crémeuses et
+        savoureuses, des gambas à l'ail épicées aux albondigas moelleuses
+        (boulettes de viande), des patatas bravas croustillantes aux pimientos
+        de Padron.
+      </p>
+      <p>
+        Nous avons également une sélection de plats principaux, notamment des
+        paellas, des riz crémeux et des salades fraîches. Tous nos plats sont
+        préparés sur commande pour garantir leur fraîcheur et leur qualité.
+      </p>
+      <Button />
+    </div>
+  </section>
+  <section class="third-section">
+    <h1 class="new-title secondary">NOUVEAUX</h1>
+    <div class="new-content white">
+      <div>
+        <h2>On vous prepare la planche apero a VOTRE sauce</h2>
+        <ul class="list">
+          <li>chiffonnades de coppa (boucherie) 130 g.</li>
+
+          <li>chiffonnade de mortadelle (boucherie) 130 g.</li>
+
+          <li>chiffonnade de saucisson aux fines 90 g.</li>
+
+          <li>tomates cerises de différentes couleurs Toma'chef 200 g.</li>
+
+          <li>
+            tapas classiques poivrons doux, olives et tomates, espace fraîcheur
+            170 g.
+          </li>
+        </ul>
+      </div>
+      <img src={plancheTapas} alt="" />
+    </div>
+  </section>
+  <section class="fourth-section">
+    <h1 class="reviews-title secondary">VOS AVIS</h1>
+    <h2 class="align-center primary">
+      Parce que ce que vous en penser compte ! Les tapas ca se partagent, la
+      passion aussi
+    </h2>
+    <Reviews />
+  </section>
+</Layout>
+
+<style>
+  .align-center {
+    text-align: center;
+  }
+  .list {
+    line-height: 55px;
+  }
+  .title-home {
+    font-size: 96px;
+  }
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 60ch;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .primary {
+    color: #6097bc;
+  }
+  .secondary {
+    color: #e15c45;
+  }
+  .first-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-image: url("../assets/bg-home.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .second-section {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -200, 0, 1);
+    background-color: white;
+    padding: 50px;
+    width: 600px;
+    margin: auto;
+    position: relative;
+    right: -250px;
+  }
+  .third-section {
+    background-color: #6097bc;
+    padding: 75px 0;
+  }
+  .fourth-section {
+    display: flex;
+    padding: 75px 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .presentation-content {
+  }
+  .white {
+    color: white;
+  }
+  .new-title {
+    position: relative;
+    top: -105px;
+    text-align: center;
+  }
+  .new-content {
+    display: flex;
+    justify-content: space-around;
+  }
+  .reviews-title {
+    text-align: center;
+  }
+</style>

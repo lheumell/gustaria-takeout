@@ -1,0 +1,133 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card/Card.astro";
+
+const responseProduct = await fetch(
+  "http://localhost:1337/api/products?populate=*"
+);
+const dataProduct: ApiResponseProduct = await responseProduct.json();
+const products = dataProduct.data;
+
+const typeProduct = {
+  entree: "entree",
+  meal: "meal",
+  dessert: "dessert",
+};
+---
+
+<Layout title="Menu Gustaria">
+  <div class="image">
+    <p class="menu-title">Gustaria Tapas, livré chez toi</p>
+  </div>
+  <div class="category">
+    <h2 class="category-title secondary">Petites faims</h2>
+    <div class="product-list">
+      {
+        products.map(
+          (data: TProduct) =>
+            data.attributes.product_type.data.attributes.name ===
+              typeProduct.entree && (
+              <Card
+                path={data.attributes.path}
+                name={data.attributes.name}
+                description={data.attributes.description}
+                price={data.attributes.price}
+                allergens={data.attributes.allergens.data}
+                image={data.attributes.image}
+                color={data.attributes.color}
+                id={data.id}
+              />
+            )
+        )
+      }
+    </div>
+  </div>
+  <div class="category">
+    <h2 class="category-title secondary">dixit comment vous regaler</h2>
+    <div class="product-list">
+      {
+        products.map(
+          (data: TProduct) =>
+            data.attributes.product_type.data.attributes.name ===
+              typeProduct.meal && (
+              <Card
+                path={data.attributes.path}
+                name={data.attributes.name}
+                description={data.attributes.description}
+                price={data.attributes.price}
+                allergens={data.attributes.allergens.data}
+                image={data.attributes.image}
+                color={data.attributes.color}
+                id={data.id}
+              />
+            )
+        )
+      }
+    </div>
+  </div>
+  <div class="category">
+    <h2 class="category-title secondary">les gourmandises</h2>
+    <div class="product-list">
+      {
+        products.map(
+          (data: TProduct) =>
+            data.attributes.product_type.data.attributes.name ===
+              typeProduct.dessert && (
+              <Card
+                path={data.attributes.path}
+                name={data.attributes.name}
+                description={data.attributes.description}
+                price={data.attributes.price}
+                allergens={data.attributes.allergens.data}
+                image={data.attributes.image}
+                color={data.attributes.color}
+                id={data.id}
+              />
+            )
+        )
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .image {
+    background-image: url("https://cdn.shopify.com/s/files/1/0603/3716/0420/files/20_2000x.jpg?v=1640861987");
+    object-fit: cover;
+    background-size: cover;
+    width: 99vw;
+    height: 405px;
+  }
+  .secondary {
+    color: #e15c45;
+  }
+  .menu-title {
+    width: 350px;
+    font-size: 75px;
+    color: white;
+    font-family: system-ui, sans-serif;
+    font-weight: bold;
+    line-height: 0.9em;
+    margin: -0.1875em 0;
+    letter-spacing: -1px;
+    padding: 50px;
+    text-transform: uppercase;
+  }
+
+  .category {
+    margin-bottom: 30px;
+  }
+
+  .category-title {
+    font-size: 48px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+    margin: auto;
+  }
+</style>
